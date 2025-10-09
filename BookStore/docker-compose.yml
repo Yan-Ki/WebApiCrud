@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+   dbPostgres:
+     image: postgres:latest 
+     container_name: "postgre_conteiner"
+     ports:
+        - "5432:5432"
+     environment:
+        POSTGRES_DB: "WebApiDb"
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: "1234"
+     volumes:
+        - db_data1:/var/lib/posgresql/data
+     
+volumes:
+   db_data1:

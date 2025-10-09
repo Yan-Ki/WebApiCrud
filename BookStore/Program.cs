@@ -7,11 +7,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//builder.Services.AddDbContext<BookStoreDbContext>(
+//    options=>
+//{
+//    options.UseSqlite(builder.Configuration.GetConnectionString(nameof(BookStoreDbContext)));
+//}); //sqlLite
+
 builder.Services.AddDbContext<BookStoreDbContext>(
-    options=>
-{
-    options.UseSqlite(builder.Configuration.GetConnectionString(nameof(BookStoreDbContext)));
-}); 
+    options =>
+    {
+        options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(BookStoreDbContext)));
+    }); //postgre
+
+
 
 var app = builder.Build();
 
