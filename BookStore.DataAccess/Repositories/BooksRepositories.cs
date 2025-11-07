@@ -22,7 +22,7 @@ namespace BookStore.DataAccess.Repositories
             var bookEntityes = await _context.Books.AsNoTracking().ToListAsync();
 
             var books = bookEntityes
-                .Select(b => Book.Cteate(b.Id, b.Titel, b.Description, b.Price).book)
+                .Select(b => Book.Create(b.Id, b.Titel, b.Description, b.Price).book)
                 .ToList();
             return books;
         }

@@ -1,13 +1,33 @@
-﻿using BookStore.DataAccess.Repositories;
+﻿using BookStore.Core.Models;
+using BookStore.DataAccess.Repositories;
 
 namespace BookStore.Application.Services
 {
-    public class BooksService
+    public class BooksService : IBooksService
     {
-        
+        private readonly IBooksRepositories _booksRepository;
         public BooksService(IBooksRepositories bookRepository)
         {
-            
+            _booksRepository = bookRepository;
+        }
+
+        public async Task<List<Book>> GetAllBoks()
+        {
+            return await _booksRepository.Get();
+        }
+        public async Task<Guid> CreateBook(Book book)
+        {
+            return await _booksRepository.Create(book);
+        }
+
+        public async Task<Guid> UpdateBook(Guid id, string title, string description, decimal price)
+        {
+            return await _booksRepository.Update(id, title, description, price);
+        }
+        public async Task<Guid> DeleteBook(Guid id)
+        {
+            return await _booksRepository.Delete(id);
         }
     }
+
 }
