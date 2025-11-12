@@ -1,12 +1,12 @@
-import Layout,{Header} from "antd/es/layout/layout";
+import Layout,{Footer, Header} from "antd/es/layout/layout";
 import "./globals.css";
 import { Menu } from "antd";
 import { Content } from "antd/es/layout/layout";
 import Link from "next/link";
 
 const items = [
-  {key: "home", label:<link href={"/"}>Home</link>},
-  {key: "books", label:<link href={"/books"}>Books</link>},
+  {key: "home", label:<Link href={"/"}>Home</Link>},
+  {key: "books", label:<Link href={"/books"}>Books</Link>},
 ];
 
 export default function RootLayout({
@@ -28,9 +28,9 @@ export default function RootLayout({
             </Header>
          
         <Content style={{padding: "0 48px"}}>{children} </Content>
-        <footer style={{textAlign:"center"}}>
+         <Footer style={{textAlign:"center"}}>
           Book store 2025 Create by Alex
-        </footer>
+        </Footer>
         </Layout>
         </body>
     </html>
